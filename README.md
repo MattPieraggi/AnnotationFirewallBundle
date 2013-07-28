@@ -38,8 +38,8 @@ The AnnotationFirewallBundle uses annotations to indicate which Routes should be
 Instead of using a pattern like `pattern: ^/api/` in your `security.yml` file, you need to register the request_matcher provided by the bundle.
 
 ``` YAML
-// app/config/security.yml
-// ...
+# app/config/security.yml
+# ...
 firewalls:
     any_firewall:
         #pattern: ^/api/    # No need of the pattern anymore
@@ -56,11 +56,11 @@ firewalls:
 
     fos_secured:  # FOSUserBundle Firewall
         pattern: ^/admin/
-        // ...
+        # ...
 
     wsse_secured: # MopaWSSEAuthenticationBundle Firewall
         request_matcher: techpaf.annotation_firewall.annotation_request_matcher
-        // ...
+        # ...
 ```
 
 ## Annotations ##
