@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="techpaf.annotation_firewall.extractor.annotation_extractor.class">TechPaf\AnnotationFirewallBundle\Extractor\AnnotationExtractor</parameter>
+        <parameter key="techpaf.annotation_firewall.security.annotation_request_matcher.class">TechPaf\AnnotationFirewallBundle\Security\AnnotationRequestMatcher</parameter>
+    </parameters>
+
+    <services>
+        <service id="techpaf.annotation_firewall.annotation_extractor" class="%techpaf.annotation_firewall.extractor.annotation_extractor.class%">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="router" />
+            <argument type="service" id="annotation_reader" />
+        </service>
+
+        <service id="techpaf.annotation_firewall.annotation_request_matcher" class="%techpaf.annotation_firewall.security.annotation_request_matcher.class%">
+            <argument type="service" id="techpaf.annotation_firewall.annotation_extractor"/>
+            <argument type="service" id="router" />
+        </service>
+    </services>
+
+</container>
