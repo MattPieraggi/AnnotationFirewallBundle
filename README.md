@@ -58,7 +58,7 @@ firewalls:
         pattern: ^/admin/
         // ...
 
-    wsse_secured: # WSSE
+    wsse_secured: # MopaWSSEAuthenticationBundle Firewall
         request_matcher: techpaf.annotation_firewall.annotation_request_matcher
         // ...
 ```
