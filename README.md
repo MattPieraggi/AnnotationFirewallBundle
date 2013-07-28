@@ -116,7 +116,7 @@ This annotation specify the default policy for every routes of a controller.
 It can have two values : `ALL` or `NONE`.
 
 * `ALL` means that every route will be excluded from the firewall unless you add an `@FirewallExpose` annotation 
-* `NONE` means that each route will be added to the firewall unless you add an `@FirewallExclude` annotation
+* `NONE` means that every route will be added to the firewall unless you add an `@FirewallExclude` annotation
 
 By default the exclusion policy is `ALL`, so unless you add annotations, no route will be secured using the AnnotationFirewallBundle.
 
