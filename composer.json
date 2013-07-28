@@ -19,5 +19,10 @@
         "psr-0": { "TechPaf\\AnnotationFirewallBundle": "" }
     },
     "minimum-stability": "dev",
-    "target-dir": "TechPaf/AnnotationFirewallBundle"
+    "target-dir": "TechPaf/AnnotationFirewallBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
 }
