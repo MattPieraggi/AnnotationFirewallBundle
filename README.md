@@ -2,7 +2,7 @@ AnnotationFirewallBundle
 ========================
 
 This bundle allows you to configure firewalls using annotations for your Symfony2 Project.
-It is inspired by [Matthias Noback's blog](http://php-and-symfony.matthiasnoback.nl/2012/07/symfony2-security-using-advanced-request-matchers-to-activate-firewalls/) and the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle)
+It is inspired by [Matthias Noback's blog](http://php-and-symfony.matthiasnoback.nl/2012/07/symfony2-security-using-advanced-request-matchers-to-activate-firewalls/), the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) and the [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
 
 # Installation #
 
@@ -66,7 +66,7 @@ firewalls:
 ## Annotations ##
 
 Then you need to configure each Controller you want to secure using this bundle.
-The annotations hierarchy and names are inspired from the [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
+The annotations hierarchy and names are inspired by the [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
 To avoid conflict with this bundle, you should import the annotations with an alias like `use TechPaf\AnnotationFirewallBundle\Annotation\Exclude as FirewallExpose;`.
 
 ``` PHP
@@ -84,7 +84,7 @@ use TechPaf\AnnotationFirewallBundle\Annotation\ExclusionPolicy as FirewallExclu
 class MyController extends Controller
 {
     /**
-    * @Route("/")
+    * @Route("/secured")
     * @Template()
     **/
     public function securedAction()
@@ -93,7 +93,7 @@ class MyController extends Controller
     }
 
     /**
-    * @Route("/")
+    * @Route("/not_secured")
     * @Template()
     *
     * @FirewallExclude
