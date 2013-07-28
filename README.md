@@ -67,7 +67,7 @@ firewalls:
 
 Then you need to configure each Controller you want to secure using this bundle.
 The annotations hierarchy and names are inspired by the [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
-To avoid conflict with this bundle, you should import the annotations with an alias like `use TechPaf\AnnotationFirewallBundle\Annotation\Exclude as FirewallExpose;`.
+To avoid conflict with this bundle, you should import the annotations with an alias like `use TechPaf\AnnotationFirewallBundle\Annotation\Exclude as FirewallExclude;`.
 
 ``` PHP
 <?php
