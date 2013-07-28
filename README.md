@@ -66,8 +66,6 @@ firewalls:
 ## Annotations ##
 
 Then you need to configure each Controller you want to secure using this bundle.
-The annotations hierarchy and names are inspired by the [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
-To avoid conflict with this bundle, you should import the annotations with an alias like `use TechPaf\AnnotationFirewallBundle\Annotation\Exclude as FirewallExclude;`.
 
 ``` PHP
 <?php
@@ -75,8 +73,8 @@ To avoid conflict with this bundle, you should import the annotations with an al
 namespace TechPaf\ExampleBundle\Controller;
 
 // ...
-use TechPaf\AnnotationFirewallBundle\Annotation\Exclude as FirewallExclude;
-use TechPaf\AnnotationFirewallBundle\Annotation\ExclusionPolicy as FirewallExclusionPolicy;
+use TechPaf\AnnotationFirewallBundle\Annotation\FirewallExclude;
+use TechPaf\AnnotationFirewallBundle\Annotation\FirewallExclusionPolicy;
 
 /**
  * @FirewallExclusionPolicy("NONE")
@@ -127,3 +125,9 @@ This annotation exclude a specific route from the firewall (the route is not sec
 ### @FirewallExpose ###
 
 This annotation add a specific route to the firewall (the route is secured)
+
+# TODO #
+
+The next updates are going to be:
+* Allow usage of the AnnotationFirewallBundle in multiple firewalls simultaneously
+* Add Cache

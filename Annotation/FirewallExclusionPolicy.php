@@ -6,7 +6,7 @@ namespace TechPaf\AnnotationFirewallBundle\Annotation;
  * @Annotation
  * @Target("CLASS")
  */
-final class ExclusionPolicy
+final class FirewallExclusionPolicy
 {
     const NONE = 'NONE';
     const ALL  = 'ALL';

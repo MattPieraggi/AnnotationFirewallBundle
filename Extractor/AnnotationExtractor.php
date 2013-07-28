@@ -7,9 +7,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouterInterface;
-use TechPaf\AnnotationFirewallBundle\Annotation\Exclude;
-use TechPaf\AnnotationFirewallBundle\Annotation\ExclusionPolicy;
-use TechPaf\AnnotationFirewallBundle\Annotation\Expose;
+use TechPaf\AnnotationFirewallBundle\Annotation\FirewallExclude as Exclude;
+use TechPaf\AnnotationFirewallBundle\Annotation\FirewallExclusionPolicy as ExclusionPolicy;
+use TechPaf\AnnotationFirewallBundle\Annotation\FirewallExpose as Expose;
 
 class AnnotationExtractor
 {
