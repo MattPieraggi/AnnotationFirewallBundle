@@ -11,7 +11,7 @@ Update your `composer.json` file:
 ``` JSON
 {
     "require": {
-        "techpaf/annotation-firewall-bundle": "dev-master"
+        "techpaf/annotation-firewall-bundle": "0.1.*@dev"
     }
 }
 ```
