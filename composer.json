@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Symfony2 bundle",
     "keywords": ["annotation", "firewall", "symfony" ],
-    "homepage": "http://github.com/MattPieraggi/AnnotationFirewallBundle",
+    "homepage": "http://github.com/MattPieraggi/TechPafAnnotationFirewallBundle",
     "license": "MIT",
     "authors": [
         {
