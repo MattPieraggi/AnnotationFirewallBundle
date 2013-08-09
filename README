@@ -1,0 +1,137 @@
+<h1>AnnotationFirewallBundle</h1>
+
+<p>This bundle allows you to configure firewalls using annotations for your Symfony2 Project.</p>
+<p>It is inspired by <a href="http://php-and-symfony.matthiasnoback.nl/2012/07/symfony2-security-using-advanced-request-matchers-to-activate-firewalls/">Matthias Noback's blog</a>, the <a href="https://github.com/nelmio/NelmioApiDocBundle">NelmioApiDocBundle</a> and the <a href="https://github.com/schmittjoh/JMSSerializerBundle">JMSSerializerBundle</a>.</p>
+
+<h2>Installation</h2>
+
+<p>Update your <code>composer.json</code> file:</p>
+
+<code>
+{
+    "require": {
+        "techpaf/annotation-firewall-bundle": "0.1.*@dev"
+    }
+}
+</code>
+
+<p>Register the bundle in <code>app/AppKernel.php</code>:</p>
+
+<code>
+// app/AppKernel.php
+public function registerBundles()
+{
+    return array(
+        // ...
+        new TechPaf\AnnotationFirewallBundle\TechPafAnnotationFirewallBundle(),
+    );
+}
+</code>
+
+<h2>Usage</h2>
+
+<p>The AnnotationFirewallBundle uses annotations to indicate which Routes should be secured.</p>
+
+<h3>Security.yml</h3>
+
+<p>Instead of using a pattern like <code>pattern: ^/api/</code> in your <code>security.yml</code> file, you need to register the request_matcher provided by the bundle.</p>
+
+<code>
+# app/config/security.yml
+# ...
+firewalls:
+    any_firewall:
+        #pattern: ^/api/    # No need of the pattern anymore
+        request_matcher: techpaf.annotation_firewall.annotation_request_matcher
+</code>
+
+<p>You can use it with multiple firewalls. For example:</p>
+
+<code>
+firewalls:
+    dev:          # default Firewall
+        pattern:  ^/(_(profiler|wdt)|css|images|js)/
+        security: false
+
+    fos_secured:  # FOSUserBundle Firewall
+        pattern: ^/admin/
+        # ...
+
+    wsse_secured: # MopaWSSEAuthenticationBundle Firewall
+        request_matcher: techpaf.annotation_firewall.annotation_request_matcher
+        # ...
+</code>
+
+<h3>Annotations</h3>
+
+<p>Then you need to configure each Controller you want to secure using this bundle.</p>
+
+<code>
+<?php
+
+namespace TechPaf\ExampleBundle\Controller;
+
+// ...
+use TechPaf\AnnotationFirewallBundle\Annotation\FirewallExclude;
+use TechPaf\AnnotationFirewallBundle\Annotation\FirewallExclusionPolicy;
+
+/**
+ * @FirewallExclusionPolicy("NONE")
+ */
+class MyController extends Controller
+{
+    /**
+    * @Route("/secured")
+    * @Template()
+    **/
+    public function securedAction()
+    {
+        return array('secured' => true);
+    }
+
+    /**
+    * @Route("/not_secured")
+    * @Template()
+    *
+    * @FirewallExclude
+    **/
+    public function notSecuredAction()
+    {
+        return array('secured' => false);
+    }
+}
+</code>
+
+<p>They are three annotations:</p>
+<ul>
+    <li>@FirewallExclusionPolicy</li>
+    <li>@FirewallExclude</li>
+    <li>@FirewallExpose</li>
+</ul>
+
+<h3>@FirewallExclusionPolicy</h3>
+
+<p>This annotation specify the default policy for every routes of a controller.</p>
+<p>It can have two values : <code>ALL</code> or <code>NONE</code>.</p>
+<ul>
+    <li><code>ALL</code> means that every route will be excluded from the firewall unless you add an <code>@FirewallExpose</code> annotation</li>
+    <li><code>NONE</code> means that every route will be added to the firewall unless you add an <code>@FirewallExclude</code> annotation</li>
+</ul>
+
+<p>By default the exclusion policy is <code>ALL</code>, so unless you add annotations, no route will be secured using the AnnotationFirewallBundle.</p>
+
+<h3>@FirewallExclude</h3>
+
+<p>This annotation exclude a specific route from the firewall (the route is not secured)</p>
+
+<h3>@FirewallExpose</h3>
+
+<p>This annotation add a specific route to the firewall (the route is secured)</p>
+
+<h1>TODO</h1>
+
+<p>The next updates are going to be:</p>
+<ul>
+    <li>Allow usage of the AnnotationFirewallBundle in multiple firewalls simultaneously</li>
+    <li>Add Cache</li>
+</ul>
