@@ -4,6 +4,8 @@ AnnotationFirewallBundle
 This bundle allows you to configure firewalls using annotations for your Symfony2 Project.
 It is inspired by [Matthias Noback's blog](http://php-and-symfony.matthiasnoback.nl/2012/07/symfony2-security-using-advanced-request-matchers-to-activate-firewalls/), the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) and the [JMSSerializerBundle](https://github.com/schmittjoh/JMSSerializerBundle).
 
+[![knpbundles.com](http://knpbundles.com/MattPieraggi/TechPafAnnotationFirewallBundle/badge-short)](http://knpbundles.com/MattPieraggi/TechPafAnnotationFirewallBundle)
+
 # Installation #
 
 Update your `composer.json` file:
