@@ -105,7 +105,7 @@ class MyController extends Controller
 }
 ```
 
-They are three annotations:
+There are three annotations:
 * @FirewallExclusionPolicy
 * @FirewallExclude
 * @FirewallExpose
